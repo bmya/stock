@@ -7,7 +7,7 @@ from openerp import fields, models, _, api
 import openerp.addons.decimal_precision as dp
 
 
-class stock_picking_type(models.Model):
+class StockPickingType(models.Model):
     _inherit = "stock.picking.type"
 
     book_required = fields.Boolean(
@@ -22,7 +22,7 @@ class stock_picking_type(models.Model):
     # constraint de que el book y el type deben ser de la misma company_id
 
 
-class stock_book(models.Model):
+class StockBook(models.Model):
     _name = 'stock.book'
     _description = 'Stock Voucher Book'
 
@@ -32,15 +32,21 @@ class stock_book(models.Model):
     sequence_id = fields.Many2one(
         'ir.sequence', 'Stock Voucher Sequence',
         domain=[('code', '=', 'stock.voucher')],
-        context="{'default_code': 'stock.voucher', 'default_name': name, 'default_prefix': '000X-', 'default_padding': 8}",
+        context="{'default_code': 'stock.voucher',"
+                "'default_name': name, "
+                "'default_prefix': '000X-', "
+                "'default_padding': 8}",
         required=True,
     )
     lines_per_voucher = fields.Integer(
         'Lines Per Voucher', required=True,
-        help="If voucher don't have a limit, then live 0. If not, this number will be used to calculate how many sequence are used on each picking"
+        help="If voucher don't have a limit, then live 0. If not, this number "
+             "will be used to calculate how many sequence are used on each "
+             "picking"
     )
     print_inmediatly = fields.Boolean(
-        'Print Inmediatly', default=True, help="If unchecked, voucher printing will be delayed")
+        'Print Inmediatly', default=True,
+        help="If unchecked, voucher printing will be delayed")
     # block_estimated_number_of_pages = fields.Boolean(
     #     'Block Estimated Number of Pages?',
     #     )
@@ -51,7 +57,7 @@ class stock_book(models.Model):
     )
 
 
-class stock_picking_voucher(models.Model):
+class StockPickingVoucher(models.Model):
     _name = 'stock.picking.voucher'
     _description = 'Stock Voucher Book'
     _rec_name = 'number'
@@ -73,10 +79,10 @@ class stock_picking_voucher(models.Model):
 
     _sql_constraints = [
         ('voucher_number_uniq', 'unique(number, book_id)',
-            _('The field "Number" must be unique per book.'))]
+         _('The field "Number" must be unique per book.'))]
 
 
-class stock_picking(models.Model):
+class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     book_id = fields.Many2one(
@@ -93,7 +99,7 @@ class stock_picking(models.Model):
 
     @api.multi
     def do_print_voucher(self):
-        '''This function prints the voucher'''
+        """This function prints the voucher"""
         if not self.book_id.print_inmediatly:
             return False
         report = self.env['report'].get_action(self, 'stock_voucher.report')
@@ -106,11 +112,10 @@ class stock_picking(models.Model):
         voucher_ids = []
         for page in range(estimated_number_of_pages):
             number = self.env['ir.sequence'].next_by_id(
-                book.sequence_id.id,)
+                book.sequence_id.id)
             voucher_ids.append(self.env['stock.picking.voucher'].create({
                 'number': number,
                 'book_id': book.id,
-                'picking_id': self.id,
-            }).id)
+                'picking_id': self.id}).id)
         self.write({
             'book_id': book.id})
