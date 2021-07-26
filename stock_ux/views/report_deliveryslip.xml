@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_delivery_document" inherit_id="stock.report_delivery_document">
+        <table name="stock_move_line_table" position="after">
+            <p t-if="o.observations" name="comment">
+                <span t-field="o.observations"/>
+            </p>
+        </table>
+        <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[1]" position="attributes">
+            <attribute name="t-if">o.env['ir.config_parameter'].sudo().get_param('stock_ux.delivery_slip_use_origin', 'False') == 'False'</attribute>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']/tbody/tr/td[1]" position="after">
+            <td t-if="o.env['ir.config_parameter'].sudo().get_param('stock_ux.delivery_slip_use_origin') == 'True'">
+                <span t-field="move.name"/>
+                <p t-if="move.description_picking != move.product_id.name">
+                    <span t-field="move.description_picking"/>
+                </p>
+            </td>
+        </xpath>
+         <xpath expr="//table[@name='stock_move_line_table']/tbody/tr/td[1]" position="attributes">
+            <attribute name="t-if">o.env['ir.config_parameter'].sudo().get_param('stock_ux.delivery_slip_use_origin', 'False') == 'False'</attribute>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_line_table']/tbody/tr/td[1]" position="after">
+            <td t-if="o.env['ir.config_parameter'].sudo().get_param('stock_ux.delivery_slip_use_origin') == 'True'">
+                <span t-field="move_line.move_id.name"/>
+                <p t-if="move_line.move_id.description_picking != move_line.product_id.name">
+                    <span t-field="move_line.move_id.description_picking"/>
+                </p>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

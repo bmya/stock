@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_picking_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <button name="button_validate" position="after">
+                <field name="block_manual_lines" invisible="1"/>
+                <button name="new_force_availability" string="Force Availability" attrs="{'invisible': ['|', '|', ('block_manual_lines', '=', True), ('state', 'not in', ('confirmed', 'waiting', 'assigned')), ('is_locked', '=', False)]}" type="object"/>
+            </button>
+            <field name="partner_id" position="attributes">
+                <attribute name="attrs"></attribute>
+            </field>
+            <field name="description_picking" position="after">
+                <field name="name" string="Descripción de origen" optional="hide"/>
+            </field>
+            <div name="button_box">
+                <button name="add_picking_operation" class="oe_inline oe_right"  icon="fa-list" type="object" string="Process Products" attrs="{'invisible': [('state', 'not in', ['confirmed', 'assigned'])]}"/>
+            </div>
+
+            <field name="product_uom" position="before">
+                <field name="lots_visible" invisible="1"/>
+                <field name="used_lots" groups="stock_ux.group_operation_used_lots" attrs="{'invisible': ['|', ('lots_visible', '=', False), ('state', 'not in', ['confirmed', 'assigned', 'waiting', 'partially_available','done'])]}"/>
+                <button name="set_all_done" string="Set all Done" type="object" icon="fa-check" states="confirmed,assigned,waiting,partially_available"/>
+            </field>
+            <button name="action_cancel" position="attributes">
+                <attribute name="groups">stock_ux.allow_picking_cancellation</attribute>
+            </button>
+
+            <!-- move notes and add observations as we have on SO and invoices -->
+            <field name="move_ids_without_package" position="after">
+                <label for="note" string="Internal Notes"/>
+                <field name="note" placeholder="Add an internal note that will be printed on the Picking Operations sheet"/>
+                <label for="observations"/>
+                <field name="observations" placeholder="Add any observation that you would like to be included on the deliverslip"/>
+            </field>
+            <page name="note" position="replace"/>
+        </field>
+    </record>
+
+</odoo>
