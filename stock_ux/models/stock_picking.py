@@ -77,7 +77,7 @@ class StockPicking(models.Model):
             self.move_lines.update(
                 {'location_dest_id': self.location_dest_id.id})
 
-    def action_done(self):
+    def _action_done(self):
         for picking in self:
             # con esto arreglamos que odoo dejaria entregar varias veces el
             # mismo picking si por alguna razon el boton esta presente
@@ -91,7 +91,7 @@ class StockPicking(models.Model):
                     'No se puede validar un picking que no esté en estado '
                     'Parcialmente Disponible o Reservado, probablemente el '
                     'picking ya fue validado, pruebe refrezcar la ventana!'))
-        res = super().action_done()
+        res = super()._action_done()
         for rec in self.with_context(mail_notify_force_send=False).filtered('picking_type_id.mail_template_id'):
             try:
                 rec.message_post_with_template(rec.picking_type_id.mail_template_id.id)

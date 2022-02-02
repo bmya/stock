@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Stock UX',
-    'version': '13.0.1.11.0',
+    'version': '14.0.1',
     'category': 'Warehouse Management',
     'sequence': 14,
     'summary': '',
@@ -30,7 +30,7 @@
     ],
     'depends': [
         'sale_stock',
-        'report_aeroo',
+        # 'report_aeroo',
         'stock_voucher',
     ],
     'data': [
@@ -46,10 +46,10 @@
         'views/stock_backorder_confirmation_views.xml',
         'views/stock_return_picking_views.xml',
         'views/stock_picking_type_views.xml',
-        'views/report_deliveryslip.xml',
+        # 'views/report_deliveryslip.xml',
         'wizards/stock_operation_wizard_views.xml',
         'wizards/res_config_settings_views.xml',
-        'report/stock_ux_report.xml',
+        # 'report/stock_ux_report.xml',
     ],
     'demo': [
     ],
