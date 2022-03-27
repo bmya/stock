@@ -9,7 +9,7 @@
             <field name="lot_id" position="after">
                 <field name="move_id" readonly="1"/>
                 <field name="picking_create_user_id"/>
-                <field name="picking_partner_id"/>
+                <!--<field name="picking_partner_id"/>-->
                 <field name="picking_code"/>
             </field>
             <field name="qty_done" position="after">
