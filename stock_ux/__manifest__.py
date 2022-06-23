@@ -30,7 +30,6 @@
     ],
     'depends': [
         'sale_stock',
-        'report_aeroo',
         'stock_voucher',
     ],
     'data': [
@@ -41,7 +40,7 @@
         'views/stock_picking_views.xml',
         # 'views/stock_move_views.xml',
         # 'views/stock_move_line_views.xml',
-        'views/stock_warehouse_orderpoint_views.xml',
+        # 'views/stock_warehouse_orderpoint_views.xml',
         'views/procurement_group_views.xml',
         'views/stock_move_views.xml',
         'views/stock_backorder_confirmation_views.xml',
