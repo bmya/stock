@@ -30,7 +30,6 @@
     ],
     'depends': [
         'stock',
-        'report_aeroo',
     ],
     'data': [
         'report/stock_report_data.xml',

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo noupdate="1">
 
-    <record id="batch_picking_list" model="ir.actions.report">
+    <!--<record id="batch_picking_list" model="ir.actions.report">
         <field name="name">Batch Picking List</field>
         <field name="model">stock.picking.batch</field>
         <field name="report_name">batch_picking_list</field>
@@ -12,6 +12,6 @@
         <field name="tml_source">file</field>
         <field name="binding_model_id" ref="stock_picking_batch.model_stock_picking_batch"/>
         <field name="binding_type">report</field>
-    </record>
+    </record>-->
 
 </odoo>
