@@ -38,6 +38,8 @@ Stock UX
 #. When archive a replenishment rule set min, max and multiple quantities in 0.
 #. Show inactive replenishment rules if the product is active (with warning decorator).
 #. Send template established in operation type when confirm picking.
+#. Add an optional setting to print remaining quantities not yet delivered on Delivery Slips: "Show remaining quantities not yet delivered on Delivery Slips."
+#. Adds a review toggle per line that allows the user to indicate when the replenishment order is ready to be confirmed.
 
 Installation
 ============

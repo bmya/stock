@@ -10,36 +10,32 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-==============================
-Stock Orderpoint Manual Update
-==============================
+====================
+Stock Picking Labels
+====================
 
-#. Improves performance when opening Replenishment menu allowing to filter replenishment rules showed and calculate the qty_to_order only for that filtered lines.
-#. Allow to filter by main supplier when opening replenishment menu in case there is a main supplier.
-#. Allow to sort the lines in replenishment view according to the forecast qty and the rotation columns.
-#. Add the filter "Negatives quantities".
-#. Improves performace when opening Replenishment menu.
+#. Prints picking waybill.
 
 Installation
 ============
 
 To install this module, you need to:
 
-#. Only need to install the module
+#. Just install this module
 
 Configuration
 =============
 
 To configure this module, you need to:
 
-#. Just select the partner in the carrier.
+#. No configuration needed.
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. Just use it.
+#. Go to the Picking and print the report "Stock Picking Labels".
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot

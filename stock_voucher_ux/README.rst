@@ -10,15 +10,13 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-==============================
-Stock Orderpoint Manual Update
-==============================
+=============
+Stock Voucher
+=============
 
-#. Improves performance when opening Replenishment menu allowing to filter replenishment rules showed and calculate the qty_to_order only for that filtered lines.
-#. Allow to filter by main supplier when opening replenishment menu in case there is a main supplier.
-#. Allow to sort the lines in replenishment view according to the forecast qty and the rotation columns.
-#. Add the filter "Negatives quantities".
-#. Improves performace when opening Replenishment menu.
+#. This module makes the assignation of the vouchers depending on the quantity of pages the report has.
+#. Replaces the field "Lines per voucher" for the boolean "Autoprinted" maintaining the same functionality.
+#. Eliminates the wizard for "Vouchers" and replace it with the action "Print Vouchers", which automatically prints and assigns the voucher/s.
 
 Installation
 ============
@@ -32,14 +30,15 @@ Configuration
 
 To configure this module, you need to:
 
-#. Just select the partner in the carrier.
+#. To configure Books:  Go to Stock / Configurations / Books.
+#. To configure the Declared Value , Book Required: Go to Stock Pincking Type.
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. Just use it.
+#. Just create a sale order, confirm and transfer the products.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
